@@ -23,13 +23,17 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 805,
     height: 500,
+    // backgroundColor: '#ffffff',
     webPreferences: {
       nodeIntegration: true
     },
-    // titleBarStyle: 'hidden'
+    // titleBarStyle: 'hidden',
+    // titleBarStyle: 'hiddenInset',
     frame: false
   })
-
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+  })
   //自定义放大缩小托盘功能
   ipcMain.on('changeWindow', (event, arg) => {
     if (arg === 'min') {
