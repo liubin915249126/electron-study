@@ -277,6 +277,7 @@
     "connected-react-router": "^6.6.1",
     "core-js": "^3.6.4",
     "devtron": "^1.4.0",
+    "dva": "^2.4.1",
     "electron-debug": "^3.0.1",
     "electron-log": "^4.0.6",
     "electron-updater": "^4.2.0",
@@ -305,7 +306,12 @@
   "prettier": {
     "overrides": [
       {
-        "files": [".prettierrc", ".babelrc", ".eslintrc", ".stylelintrc"],
+        "files": [
+          ".prettierrc",
+          ".babelrc",
+          ".eslintrc",
+          ".stylelintrc"
+        ],
         "options": {
           "parser": "json"
         }
@@ -314,14 +320,20 @@
     "singleQuote": true
   },
   "stylelint": {
-    "extends": ["stylelint-config-standard", "stylelint-config-prettier"]
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-prettier"
+    ]
   },
   "renovate": {
-    "extends": ["bliss"]
+    "extends": [
+      "bliss"
+    ]
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "__npminstall_done": false
 }

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import dva from 'dva'
 import { render } from 'react-dom';
 import { AppContainer as ReactHotAppContainer } from 'react-hot-loader';
 import Root from './containers/Root';
@@ -10,12 +11,10 @@ const store = configureStore();
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
 
-const app = dva()
-app.router(({ history, app: store }) => (
-  <AppContainer>
-      <Root store={store} history={history} />
-    </AppContainer>
-));
-// app.model(Homes)
-// app.model(main)
+const app = dva({
+  history: require("history").createHashHistory(),
+})
+
+app.router(require('./Routes.tsx').default);
+
 app.start('#root')
