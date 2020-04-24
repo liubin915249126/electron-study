@@ -9,11 +9,13 @@ const store = configureStore();
 
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
-document.addEventListener('DOMContentLoaded', () =>
-  render(
-    <AppContainer>
+
+const app = dva()
+app.router(({ history, app: store }) => (
+  <AppContainer>
       <Root store={store} history={history} />
-    </AppContainer>,
-    document.getElementById('root')
-  )
-);
+    </AppContainer>
+));
+// app.model(Homes)
+// app.model(main)
+app.start('#root')
