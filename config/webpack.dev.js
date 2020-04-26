@@ -41,7 +41,7 @@ module.exports = {
                                     //tree shaking 按需加载babel-polifill  presets从后到前执行 
                                     ["@babel/preset-env", {
                                         "modules": false,
-                                        "useBuiltIns": "false", "corejs": 2,
+                                        "useBuiltIns": false, "corejs": 2,
                                     }],
                                 ],
 

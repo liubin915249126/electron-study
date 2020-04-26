@@ -21,13 +21,13 @@ function createWindow() {
   ]);
   tray.setContextMenu(contextMenu);
   mainWindow = new BrowserWindow({
-    width: 805,
-    height: 500,
+    width: 1024,
+    height: 728,
     // backgroundColor: '#ffffff',
     webPreferences: {
       nodeIntegration: true
     },
-    // titleBarStyle: 'hidden',
+    titleBarStyle: 'hidden',
     // titleBarStyle: 'hiddenInset',
     frame: false
   })
@@ -73,6 +73,8 @@ function createWindow() {
     );
   })
 }
+
+require('electron-debug')();
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
