@@ -110,7 +110,6 @@ module.exports = {
         port: 5000,
         hot: true,
         before() {
-            // if (process.env.START_HOT) {
             console.log('Starting Main Process...');
             spawn('npm', ['run', 'start'], {
                 shell: true,
@@ -120,7 +119,6 @@ module.exports = {
                 .on('close', code => process.exit(code))
                 .on('error', spawnError => console.error(spawnError));
         }
-        //   }
     },
     resolve: {
         extensions: [".js", ".json", ".jsx"]
