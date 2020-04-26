@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const os = require('os')
 const { spawn, execSync }  = require('child_process');
+
 module.exports = {
     entry: {
         app: ['babel-polyfill', './src/index.js', './index.html'],
