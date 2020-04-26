@@ -106,7 +106,7 @@ module.exports = {
     mode: 'development',
     devServer: {
         contentBase: '../build',
-        open: true,
+        // open: true,
         port: 5000,
         hot: true,
         before() {
