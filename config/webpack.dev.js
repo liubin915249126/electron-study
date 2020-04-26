@@ -2,6 +2,7 @@ const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const os = require('os')
+const { spawn, execSync }  = require('child_process');
 module.exports = {
     entry: {
         app: ['babel-polyfill', './src/index.js', './index.html'],
@@ -107,7 +108,19 @@ module.exports = {
         contentBase: '../build',
         open: true,
         port: 5000,
-        hot: true
+        hot: true,
+        before() {
+            // if (process.env.START_HOT) {
+            console.log('Starting Main Process...');
+            spawn('npm', ['run', 'start'], {
+                shell: true,
+                env: process.env,
+                stdio: 'inherit'
+            })
+                .on('close', code => process.exit(code))
+                .on('error', spawnError => console.error(spawnError));
+        }
+        //   }
     },
     resolve: {
         extensions: [".js", ".json", ".jsx"]
