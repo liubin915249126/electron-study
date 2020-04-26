@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "webpack-dev-server --config ./config/webpack.dev.js",
+    "dev": "cross-env NODE_ENV=development  webpack-dev-server --config ./config/webpack.dev.js",
     "build": "webpack  --config  ./config/webpack.prod.js "
   },
   "repository": "https://github.com/electron/electron-quick-start",
