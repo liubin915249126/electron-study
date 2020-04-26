@@ -3,6 +3,7 @@ import App from './App'
 import dva from 'dva'
 import Homes from './model/Homes'
 import main from './model/main'
+import './index.less'
 const app = dva()
 app.router(({ history, app: store }) => (
   <App

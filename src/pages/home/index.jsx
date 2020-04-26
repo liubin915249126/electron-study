@@ -35,11 +35,11 @@ class App extends React.Component {
         console.log(this.props)
         return (
             <div className="wrap">
-                <div className="nav">
+                {/* <div className="nav">
                     <NavLink to="/home/main">Home</NavLink>
                     <NavLink to="/home/firend">Friend</NavLink>
                     <NavLink to="/home/more">More</NavLink>
-                </div>
+                </div> */}
                 <div className="content">
                     <Title></Title>
                     <Switch>
