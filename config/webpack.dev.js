@@ -4,6 +4,8 @@ const webpack = require('webpack')
 const os = require('os')
 const { spawn, execSync }  = require('child_process');
 
+const isProd = process.env.NODE_ENV === 'production'
+
 module.exports = {
     entry: {
         app: ['babel-polyfill', './src/index.js', './index.html'],
@@ -104,7 +106,8 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
     ],
-    mode: 'development',
+    mode: isProd ?'production':'development',
+    devtool: isProd?null:'source-map',
     devServer: {
         contentBase: '../build',
         // open: true,
