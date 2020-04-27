@@ -1,6 +1,7 @@
 import React from 'react'
 import App from './App'
 import dva from 'dva'
+import 'antd/dist/antd.less';
 
 const models = require.context('./model',false,/(\.js|\.jsx)$/)
 
