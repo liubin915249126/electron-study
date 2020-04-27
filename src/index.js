@@ -1,8 +1,11 @@
 import React from 'react'
 import App from './App'
 import dva from 'dva'
-import Homes from './model/Homes'
-import main from './model/main'
+
+const models = require.context('./model',false,/(\.js|\.jsx)$/)
+
+
+
 import './index.less'
 const app = dva()
 app.router(({ history, app: store }) => (
@@ -12,6 +15,9 @@ app.router(({ history, app: store }) => (
     dispatch={store._store.dispatch}
   />
 ));
-app.model(Homes)
-app.model(main)
+
+models.keys().forEach(key=>{ 
+  app.model(models(key).default)
+})
+
 app.start('#root')
