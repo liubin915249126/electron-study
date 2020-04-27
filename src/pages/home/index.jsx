@@ -18,8 +18,8 @@ class App extends React.Component {
             ws.send('123')
             console.log('open')
         }
-        ws.onmessage = function () {
-            console.log('onmessage')
+        ws.onmessage = function (data) {
+            console.log('onmessage',data)
         }
         ws.onerror = function () {
             console.log('onerror')
