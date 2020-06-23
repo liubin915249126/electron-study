@@ -14,21 +14,30 @@ class App extends React.Component {
         ipcRenderer.on('message', (event, arg) => {
             console.log(arg, new Date(Date.now()))
         })
-        const ws = new WebSocket('ws://localhost:8087');
-        console.log('ws',ws)
-        ws.onopen = function () {
-            ws.send('123')
-            ws.send({"op":"query","args":["BTCUSDT"]})
-            console.log('open')
-        }
-        ws.onmessage = function (data) {
-            console.log('onmessage',data)
-        }
-        ws.onerror = function (error) {
-            console.log('onerror',error)
-        }
-        ws.onclose = function () {
-            console.log('onclose')
+        try {
+            const ws = new WebSocket('ws://localhost:8087/realtime_private');
+            console.log('ws', ws)
+            ws.onopen = function () {
+                ws.send(JSON.stringify({ "op": "query", "args": ["BTCUSDT"] }))
+                console.log('open')
+            }
+            ws.onmessage = ({data})=> {
+                const res = JSON.parse(data);
+                if(res.topic == 'private.wallet'){
+                    this.props.dispatch({type:'wallet/changeWallet',data:res})
+                }
+                if(res.topic == 'private.position'){
+                    this.props.dispatch({type:'wallet/changePosition',data:res})
+                }
+            }
+            ws.onerror = function (error) {
+                console.log('error', error)
+            }
+            ws.onclose = function () {
+                console.log('onclose')
+            }
+        } catch (error) {
+            console.log('error1', error)
         }
     }
     componentWillUnmount() {
