@@ -19,7 +19,7 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^5.0.2"
+    
   },
   "dependencies": {
     "@babel/core": "^7.4.5",

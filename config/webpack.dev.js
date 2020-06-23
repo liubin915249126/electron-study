@@ -53,7 +53,7 @@ module.exports = {
                                     //支持import 懒加载    plugin从前到后
                                     "@babel/plugin-syntax-dynamic-import",
                                     //andt-mobile按需加载  true是less，如果不用less style的值可以写'css' 
-                                    ["import", { libraryName: "antd-mobile", style: true }],
+                                    ["import", { libraryName: "antd", style: true }],
                                     //识别class组件
                                     ["@babel/plugin-proposal-class-properties", { "loose": true }],
                                     //
@@ -122,6 +122,9 @@ module.exports = {
             })
                 .on('close', code => process.exit(code))
                 .on('error', spawnError => console.error(spawnError));
+        },
+        after(){
+            console.log('success')
         }
     },
     resolve: {
