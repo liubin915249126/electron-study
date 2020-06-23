@@ -45,7 +45,7 @@ module.exports = {
                                     //tree shaking 按需加载babel-polifill  presets从后到前执行 
                                     ["@babel/preset-env", {
                                         "modules": false,
-                                        "useBuiltIns": false, "corejs": 2,
+                                        "useBuiltIns": 'entry', "corejs": 2,
                                     }],
                                 ],
 
@@ -54,6 +54,7 @@ module.exports = {
                                     "@babel/plugin-syntax-dynamic-import",
                                     //andt-mobile按需加载  true是less，如果不用less style的值可以写'css' 
                                     ["import", { libraryName: "antd", style: true }],
+                                    ["@babel/plugin-proposal-decorators", { "legacy": true }],
                                     //识别class组件
                                     ["@babel/plugin-proposal-class-properties", { "loose": true }],
                                     //

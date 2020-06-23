@@ -19,7 +19,7 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    
+    "@babel/plugin-proposal-decorators": "^7.10.3"
   },
   "dependencies": {
     "@babel/core": "^7.4.5",

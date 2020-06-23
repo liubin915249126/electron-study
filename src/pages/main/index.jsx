@@ -23,6 +23,11 @@ class App extends React.Component {
                 <Button type="primary" onClick={this.handleAdd}>add</Button>&nbsp;&nbsp;
                 <Button type="primary" onClick={this.handleAddAsync}>async</Button>&nbsp;&nbsp;
                 <Button onClick={this.handleDel}>{homes}</Button>
+                <div>
+                   <a href="/#/home/wallet">
+                    <Button onClick={this.handleDel}>wallet</Button> 
+                   </a>  
+                </div>
             </div>
         )
     }

@@ -5,6 +5,7 @@ import Title from '../../components/title'
 import Main from '../main'
 import Friend from '../firend'
 import More from '../more'
+import Wallet from '../wallet'
 import { connect } from 'dva'
 import './index.less'
 class App extends React.Component {
@@ -13,16 +14,18 @@ class App extends React.Component {
         ipcRenderer.on('message', (event, arg) => {
             console.log(arg, new Date(Date.now()))
         })
-        const ws = new WebSocket('ws://localhost:8080');
+        const ws = new WebSocket('ws://localhost:8087');
+        console.log('ws',ws)
         ws.onopen = function () {
             ws.send('123')
+            ws.send({"op":"query","args":["BTCUSDT"]})
             console.log('open')
         }
         ws.onmessage = function (data) {
             console.log('onmessage',data)
         }
-        ws.onerror = function () {
-            console.log('onerror')
+        ws.onerror = function (error) {
+            console.log('onerror',error)
         }
         ws.onclose = function () {
             console.log('onclose')
@@ -46,6 +49,7 @@ class App extends React.Component {
                         <Route path="/home/main" component={Main}></Route>
                         <Route path="/home/firend" component={Friend}></Route>
                         <Route path="/home/more" component={More}></Route>
+                        <Route path="/home/wallet" component={Wallet}></Route>
                         <Redirect to="/home/main"></Redirect>
                     </Switch>
                 </div>
